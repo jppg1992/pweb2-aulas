@@ -1,0 +1,77 @@
+EXERCICIO  8
+
+opção 1: Criar um méhodo na classe alunoDao para fechar a conexão.
+	E chamar o método em um bloco try finally na classe executavel.
+	Desvantagem é ter que chamar o método sempre e pode ser esquecido e a conexão continuar aberta, 
+	porém tem um controle para inicializar e finalizar a conexão.
+	exemplo no trecho a baixo.
+	
+package testes;
+
+import DAO.AlunoDAO;
+import modelo.Aluno;
+
+public class TesteConsultarBD_comDAO {
+
+	public static void main(String[] args) {
+		 
+		AlunoDAO alunoDAO = new AlunoDAO();
+		try {
+		Aluno umAluno  = alunoDAO.consultarPorID(5);
+		System.out.println("aluno(a) "+ umAluno.getNome()+" tem "+ umAluno.getIdade()+ " anos de idade.");
+		}finally {
+			try {
+			alunoDAO.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+	}
+
+}
+
+Opção 2: Abrir a conexão e fechar em cada método da classe.
+	Vantagem é que a conexão sempre vai ser fechada, 
+	desvantagem é não ter o controle de iniciar a finalizar a conexão se quiser executar vários métodos dentro da 
+	mesma conexão com o banco de dados.
+	exemplo no trecho a baixo.
+	
+	public ArrayList<Aluno> listarTodos() {
+
+		// abrindo a conexão
+		Connection connection = new FabricaDeConexoesBD().obterConexao();
+		try {
+			ArrayList<Aluno> alunos = new ArrayList<Aluno>();
+			String sql = "SELECT id,nome,idade from alunos WHERE idade < 34";
+
+			Statement statement = connection.createStatement();
+			ResultSet resultSet = statement.executeQuery(sql);
+
+			while (resultSet.next()) {
+
+				Aluno aluno = new Aluno();
+				// pega o valor de cada coluna da linha corrente do cursor
+				aluno.setId( resultSet.getInt("id"));
+				aluno.setNome( resultSet.getString("nome"));
+				aluno.setIdade( resultSet.getInt("idade"));
+			
+				alunos.add(aluno);
+			}
+
+			
+			resultSet.close();
+			statement.close();
+			return alunos;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;	
+		} finally {
+			try {
+				//fechando aconexão
+				connection.close();
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
+	}
+
