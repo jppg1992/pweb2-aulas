@@ -16,6 +16,7 @@ import modelo.Venda;
 public class AtualizarVendaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -24,7 +25,7 @@ public class AtualizarVendaServlet extends HttpServlet {
 		VendaDAO vendaDAO = new VendaDAO();
 		Venda v = vendaDAO.consultarPorId(id);
 		response.setContentType("text/html");
-		
+
 		PrintWriter saida = response.getWriter();
 		saida.print("<h2>Atualizar Venda</h2>");
 		saida.print("<form action=\"updateVendaServlet\" method=\"post\">");
@@ -32,7 +33,7 @@ public class AtualizarVendaServlet extends HttpServlet {
 		saida.print("<br /><b>item</b>: <br/> <input type=\"text\" name=\"nome\" value='" + v.getItem()+"'>");
 		saida.print("<br /><b>valor</b>: <br/> <input type=\"text\" name=\"valor\" value='" + v.getValor()+"'>");
 		saida.print("<br /><input type=\"submit\" name=\"enviar\" value=\"Atualizar\"> 	</form>");
-		
+
 		saida.close();
 	}
 }

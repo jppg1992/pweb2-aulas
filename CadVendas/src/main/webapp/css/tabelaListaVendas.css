@@ -2,8 +2,8 @@
 
 body{
 	padding: 5%;
-	 background:url('https://source.unsplash.com/random/1600×900/?cabras');
-	 background-repeat: no-repeat;
+	 background-color: black;
+     background-repeat: no-repeat;
 	 background-size: 100%;
 	 color: white;
 }

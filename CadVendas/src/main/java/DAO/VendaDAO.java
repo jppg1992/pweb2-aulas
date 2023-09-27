@@ -1,8 +1,13 @@
 package DAO;
 
-import java.util.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
 import modelo.Venda;
-import java.sql.*;
 
 public class VendaDAO {
 	public  static Connection obterConexao() {
@@ -35,7 +40,7 @@ public class VendaDAO {
 		}
 		return status;
 	}
-	
+
 	public  int atualizar(String nome,int id,double valor) {
 		int status = 0;
 		try {
@@ -44,7 +49,7 @@ public class VendaDAO {
 			ps.setString(1, nome);
 			ps.setDouble(2, valor);
 			ps.setInt(3, id);
-			
+
 			status = ps.executeUpdate();
 			con.close();
 		} catch (Exception ex) {
@@ -89,11 +94,11 @@ public class VendaDAO {
 			return v;
 			}
 
-	public   List<Venda> listarTodas() {
-		List<Venda> listaVendas = new ArrayList<Venda>();
+	public   List<Venda> listarTodas(String ordem, String tipo) {
+		List<Venda> listaVendas = new ArrayList<>();
 		try {
 			Connection con = VendaDAO.obterConexao();
-			PreparedStatement ps = con.prepareStatement("SELECT * FROM vendas ORDER BY id DESC ");
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM vendas ORDER BY "+ordem+" "+tipo+" ");
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				String valorTxt = rs.getString("valor");

@@ -9,20 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DAO.VendaDAO; 
+import DAO.VendaDAO;
 
 @WebServlet("/updateVendaServlet")
 public class UpdateVendaBDServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		System.out.println(request.getParameterNames());
 		String item = request.getParameter("nome");
-		float valor = Float.parseFloat(request.getParameter("valor")); 
+		float valor = Float.parseFloat(request.getParameter("valor"));
 		int id = Integer.parseInt(request.getParameter("idText"));
-		VendaDAO vendaDAO = new VendaDAO(); 
-		 
+		VendaDAO vendaDAO = new VendaDAO();
+
 		int status = vendaDAO.atualizar(item,id,valor);
 		response.setContentType("text/html");
 		PrintWriter saida = response.getWriter();

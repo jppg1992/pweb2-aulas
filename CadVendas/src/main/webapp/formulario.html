@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulário</title>
+</head>
+<body>
+    <form action="dadosFormularioServlet" method="post">
+        <label for="diaSemana">Escolha um dia da semana:</label>
+        <select id="diaSemana" name="diaSemana">
+            <option value="segunda-feira">Segunda-feira</option>
+            <option value="terca-feira">Terça-feira</option>
+            <option value="quarta-feira">Quarta-feira</option>
+            <option value="quinta-feira">Quinta-feira</option>
+            <option value="sexta-feira">Sexta-feira</option>
+            <option value="sabado">Sábado</option>
+            <option value="domingo">Domingo</option>
+        </select>
+
+        <br>
+
+        <label for="cadastrarEmail">Deseja cadastrar seu e-mail?</label>
+        <input type="radio" id="cadastrarEmailSim" name="cadastrarEmail" value="sim">
+        <label for="cadastrarEmailSim">Sim</label>
+        <input type="radio" id="cadastrarEmailNao" name="cadastrarEmail" value="nao" checked>
+        <label for="cadastrarEmailNao">Não</label>
+
+        <br>
+
+        <label>Quais frutas prefere?</label>
+        <input type="checkbox" id="frutaMaca" name="frutas" value="maca">
+        <label for="frutaMaca">Maçã</label>
+        <input type="checkbox" id="frutaPera" name="frutas" value="pera">
+        <label for="frutaPera">Pera</label>
+        <input type="checkbox" id="frutaUva" name="frutas" value="uva">
+        <label for="frutaUva">Uva</label>
+        <input type="checkbox" id="frutaBanana" name="frutas" value="banana">
+        <label for="frutaBanana">Banana</label>
+
+        <br>
+
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>
