@@ -45,7 +45,6 @@ public class ConsultarVendaBDServlet extends HttpServlet {
 		saida.print("<br /><b>quantidade</b>: " + listaVendas.get(atual).getValor());
 		saida.print("<br /><b>quantidade</b>: " + listaVendas.get(atual).getValor());
 
-		System.out.println(Integer.parseInt(confirmar) = 1);
 		System.out.println(confirmar);
 		System.out.println("sim");
 		
