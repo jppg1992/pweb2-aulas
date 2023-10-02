@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Inserir Venda com Pagamento Digital</title>
+</head>
+<body>
+
+	<h3>Registrar uma nova venda com pagamento digital</h3>
+	
+	<form action="inserirVendaPagDigitalServlet" method="post">
+	
+		<b>Dados do cliente:</b>	
+		<br />
+		
+		Nome: 
+		<br />		
+		<input type="text" name="nomeCLiente" value="">
+		<br />
+
+		E-mail: 
+		<br />		
+		<input type="text" name="emailCLiente" value="">
+		<br />
+		<br />
+
+
+		<b>Dados do produto:</b>
+		<br />
+		
+		Item: 
+		<br />		
+		<input type="text" name="nomeProduto" value="">
+		<br />
+		
+		Valor (em R$): 
+		<br />		
+		<input type="text" name="valorProduto" value="0.00">
+		<br />
+		<br />		
+		
+		<br />
+		<b>Dados do pagamento e da entrega:</b>
+		<br />
+		<br />
+
+		Forma de pagamento:		
+		<select name="formaPagamento">
+			<option selected="selected">Boleto bancário</option>
+			<option>Cartão de crédito</option>
+			<option>Pix</option>
+		</select>
+		
+		<p>Boleto bancário - pagamento à vista em até 3 dias úteis, com 5% de desconto <br />
+		   Cartão de crédito - pagamento imediato à vista, sem desconto<br />
+		   Pix - pagamento à vista e imediato, com 10% de desconto</p>
+		<br />
+
+		Tipo de entrega:
+		<br />
+		<input type="radio" name="tipoDeEntrega" value="transportadora" checked="checked">Transportadora (de 7 a 30 dias úteis) - R$ 40
+		<br />
+		<input type="radio" name="tipoDeEntrega" value="sedex">Sedex (de 2 a 6 dias úteis) - R$	60
+		
+		<br />
+		<br />
+		<br />
+		<input type="submit" name="" value="Registrar o pagamento digital">
+	
+	</form>
+	
+	<br />
+	<br />
+	<a href="listarVendasPagDigitalServlet">Lista de Vendas com pagamento digital</a>
+
+</body>
+</html>
