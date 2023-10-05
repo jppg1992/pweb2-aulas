@@ -74,10 +74,7 @@
 status : <span style='color: red'> <%=v.getStatusPagamento() %></span>
 
  <br><br>
- <a href="listarVendasPagDigitalServlet">Lista de Vendas com pagamento digital</a>
- 
-
-	 
+ <a href="ListarVendasServlet">Lista de Vendas com pagamento digital</a>
 
 	<c:import url="/components-jstl/rodape.jsp" />
 </body>
