@@ -38,7 +38,21 @@ public class inserirVendaPagDigitalServlet extends HttpServlet {
 		double valor = valorProduto != "" ? Double.parseDouble(valorProduto) : 0;
 		String formaPagamento = request.getParameter("formaPagamento");
 		String tipoDeEntrega = request.getParameter("tipoDeEntrega");
-
+		double valorOriginal = valor;
+		
+		double valorFinal = valor;
+		
+		if (formaPagamento.equals("Pix")) {
+			valorFinal -= valor*0.1f;
+		}else if(formaPagamento.equals("Boleto bancário")) {
+			valorFinal -= valor*0.05f;
+		}
+		
+		if (tipoDeEntrega.equals("sedex")) {
+			valorFinal+= 60;
+		}else {
+			valorFinal+=40;
+		}
 		PrintWriter htmlSaida = response.getWriter();
 		if (nomeCLiente == null || nomeCLiente == "" || valorProduto == "" || valorProduto == null || valor <= 0) {
 			htmlSaida.print(
@@ -49,17 +63,22 @@ public class inserirVendaPagDigitalServlet extends HttpServlet {
 			v.setCliente(nomeCLiente);
 			v.setClienteEmail(emailCLiente);
 			v.setProduto(nomeProduto);
-			v.setStatusPagamento("Aguardando pagamento...");
+			 
+			if (formaPagamento.equals("Cartão de crédito")) {
+				v.setStatusPagamento("Pagamento Confirmado");	
+			}else {
+			v.setStatusPagamento("Aguardando o pagamento");
+			}
 			v.setTipoEntrega(tipoDeEntrega);
 			v.setTipoPagamento(formaPagamento);
-			v.setValorPago(valor);
+			v.setValorPago(valorFinal);
 			VendaPagDigitalDAO vendaDAO = new VendaPagDigitalDAO();
 			int status = vendaDAO.inserir(v);
 			System.out.println(status);
  
 			if (status > 0) {
 				request.setAttribute("venda", v);
-				RequestDispatcher rd = request.getRequestDispatcher("/confirmacao.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("/confirmacao.jsp?valorOriginal="+valorOriginal);
 				rd.forward(request,response);
 				 	 
 			} else {
