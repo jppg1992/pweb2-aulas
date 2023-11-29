@@ -23,5 +23,13 @@
 	|	
 	&nbsp;
 	<a href="listarTodosBairros">Listar Bairros</a>  
-	&nbsp;		
+	&nbsp;
+	|
+	&nbsp;
+	<a href="bairrosPopulosos">Listar Bairros Populosos</a>  
+	&nbsp;	
+	|
+	&nbsp;
+	<a href="consultaDireta">Consulta direta de bairro</a>  
+	&nbsp;				
 </div>
