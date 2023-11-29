@@ -31,5 +31,9 @@
 	|
 	&nbsp;
 	<a href="consultaDireta">Consulta direta de bairro</a>  
-	&nbsp;				
+	&nbsp;		
+	|
+	&nbsp;
+	<a href="relatorio">Relatório de Cidades</a>  
+	&nbsp;			
 </div>

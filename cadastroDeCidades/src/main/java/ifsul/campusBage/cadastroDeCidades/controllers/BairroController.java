@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import ifsul.campusBage.cadastroDeCidades.models.Bairro;
+import ifsul.campusBage.cadastroDeCidades.models.BairroProcejao;
+import ifsul.campusBage.cadastroDeCidades.models.Cidade;
 import ifsul.campusBage.cadastroDeCidades.repositories.BairroRepository;
 
 @Controller
@@ -122,6 +124,23 @@ public class BairroController {
 
 			return "tela-consulta-bairro.jsp";
 		}
+	}
+	
+	@GetMapping("/relatorio")
+	public String relatorio() {
+		
+		
+		return "tela-filtro-relatorio.jsp";
+	}
+	
+	@PostMapping("/relatorioCidades")
+	public String buscarCidades(Model model, int quantidade) {
+		
+		List<BairroProcejao> cidades = bairroRepository.countCidadesByEstadoHaving(quantidade);
+		
+		model.addAttribute("cidades", cidades);
+		
+		return "relatorio-de-cidades.jsp";
 	}
 
 }

@@ -24,7 +24,7 @@
 	
 		Nome:
 		<br />
-		<input type="text" name="nome" value="${umBairro.nome}">
+		<input type="text" name="nome" value="${umBairro.nome} required">
 
 		<br />		
 		<br />

@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Cadastrar Bairro</title>
+	<title>Consultar Bairro</title>
 </head>
 <body style="margin-top: -20px;">
 
@@ -27,7 +27,7 @@
 		
 		Nome:
 		<br />
-		<input type="text" name="nome" value="${bairro.nome}">
+		<input type="text" name="nome" value="${bairro.nome}" required>
 		<br />
 		<br />
 		<input type="button" name="btnVoltar" value="Voltar" onclick="history.go(-1);">

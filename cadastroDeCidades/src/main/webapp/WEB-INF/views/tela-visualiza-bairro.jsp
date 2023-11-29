@@ -20,7 +20,7 @@
 	</c:if>
 	<h2>Dados Bairro</h2>
 	
-	<form action="inserirBairro" method="post">
+	<form action="" method="post">
 		
 		
 		
